@@ -21,17 +21,17 @@ const projects = [
     title: "HRMS chat bot: An HR chatbot for enterprises",
     description: "A chatbot that provides HR services to employees, managers, and HR managers. Integrated with Keka HR portal for leave application and attendace logging. Integrated with Slack and MS Teams for seamless communication.",
     tags: ["Azure Open AI", "Microsoft Bot Builder", "Azure Bot Service", "Python", "FastAPI", "Chroma DB", "Langchain"],
-    liveUrl: "https://drive.google.com/file/d/1drR8PFuNGP1hMU44VGEdB0lK9UMBr3GZ/view",
-    githubUrl: "Private",
-    videoId: "iRfluvbTNaA"
+    liveUrl: "https://www.youtube.com/watch?v=E9OLF7G16ZA",
+    githubUrl: "https://github.com/siddharth1201/hrms-on-chat",
+    videoId: "E9OLF7G16ZA"
   },
   {
-    title: "AI Content Generator",
-    description: "An AI-powered application that generates various types of content based on user prompts and preferences.",
-    tags: ["React", "OpenAI API", "Node.js", "Express"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    videoId: "iRfluvbTNaA"
+    title: "Shopify Chatbot",
+    description: "An AI-powered chatbot for Shopify stores that helps customers find products, answer queries, and order products. Integrated with Shopify API for seamless communication.",
+    tags: ["Streamlit", "Shopify GraphQL APIs", "Python FastAPIs", "OpenAI", "Langgraph", "Langsmith", "Chroma DB"],
+    liveUrl: "https://www.youtube.com/watch?v=XBV5vPF5Ba8",
+    githubUrl: "https://github.com/siddharth1201/shopify-chat",
+    videoId: "XBV5vPF5Ba8"
   },
   {
     title: "SAGE - Speech Analysis And Guidance Engine",
@@ -39,7 +39,7 @@ const projects = [
     tags: ["Whisper AI", "GPT 4o-mini", "Prompt Engineering", "LLm Parallelization"],
     liveUrl: "Private",
     githubUrl: "Private",
-    videoId: "iRfluvbTNaA"
+    videoId: ""
   },
 ];
 
@@ -103,15 +103,33 @@ export function ProjectsSection() {
                         className="w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
-                        title="Project Video"
+                        title={`${project.title} Video`}
                       />
                     </div>
-                  ) : (
+                  ) : project.videoId ? (
                     <div 
-                      className="absolute inset-0 flex items-center justify-center cursor-pointer bg-black/70"
+                      className="relative w-full h-full cursor-pointer"
                       onClick={() => setPlayingVideo(index)}
                     >
-                      <Play className="h-12 w-12 text-white" />
+                      <Image 
+                        src={`https://img.youtube.com/vi/${project.videoId}/maxresdefault.jpg`} 
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = `https://img.youtube.com/vi/${project.videoId}/hqdefault.jpg`;
+                        }}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-10 transition-all duration-300">
+                        <div className="bg-white bg-opacity-80 rounded-full p-3 flex items-center justify-center">
+                          <Play className="w-8 h-8 text-black" />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <span className="text-gray-400">No preview available</span>
                     </div>
                   )}
                 </div>
@@ -133,12 +151,12 @@ export function ProjectsSection() {
                       Code
                     </a>
                   </Button>
-                  <Button size="sm" asChild>
+                  {/* <Button size="sm" asChild>
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <ExternalLink className="h-4 w-4" />
                       Live Demo
                     </a>
-                  </Button>
+                  </Button> */}
                 </CardFooter>
               </Card>
             </motion.div>

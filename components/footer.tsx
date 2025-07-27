@@ -20,7 +20,7 @@ export function Footer() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-4">John Doe</h3>
+              <h3 className="text-2xl font-bold mb-4">Siddharth Verma</h3>
               <p className="text-muted-foreground mb-4 max-w-md">
                 A passionate full-stack developer specializing in creating exceptional digital experiences.
                 Let's work together to bring your ideas to life.
@@ -121,7 +121,7 @@ export function Footer() {
             viewport={{ once: true }}
             className="text-muted-foreground text-sm"
           >
-            © {currentYear} John Doe. All rights reserved.
+            © {currentYear} Siddharth Verma. All rights reserved.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

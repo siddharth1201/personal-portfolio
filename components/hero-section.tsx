@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
@@ -37,13 +37,28 @@ export function HeroSection() {
     };
   }, []);
 
+  const handleResumeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Open PDF in new tab
+    window.open('/resume.pdf', '_blank');
+    
+    // Download PDF
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'siddharth-verma-resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section 
       ref={sectionRef}
       id="home" 
       className="min-h-screen pt-20 flex flex-col justify-center relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -99,8 +114,12 @@ export function HeroSection() {
                 <ArrowDown className="h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline">
-              Download CV
+            <Button 
+              size="lg" 
+              variant="outline" 
+              onClick={handleResumeClick}
+            >
+              View Resume
             </Button>
           </motion.div>
           
@@ -121,7 +140,7 @@ export function HeroSection() {
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a
-              href="www.linkedin.com/in/siddharthverma7952a31a9"
+              href="https://www.linkedin.com/in/siddharthverma7952a31a9"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -145,42 +164,28 @@ export function HeroSection() {
         
         <motion.div
           ref={imageRef}
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ 
             duration: 0.8, 
             delay: 0.5,
             type: "spring",
-            stiffness: 100
+            stiffness: 50
           }}
-          className="flex justify-center lg:justify-end"
+          className="flex justify-center w-full mt-12 lg:mt-0 lg:pl-8 xl:pl-16"
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
+          <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-              alt="John Doe"
+              src="/myimg.jpg"
+              alt="Siddharth Verma"
               fill
-              sizes="(max-width: 768px) 256px, 320px"
+              sizes="(max-width: 640px) 14rem, (max-width: 768px) 16rem, (max-width: 1024px) 20rem, 24rem"
               priority
               className="object-cover"
             />
           </div>
         </motion.div>
       </div>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown className="h-8 w-8 text-primary" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

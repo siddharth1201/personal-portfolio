@@ -1,0 +1,1 @@
+// This file is no longer needed since we're opening the PDF in a new tab
