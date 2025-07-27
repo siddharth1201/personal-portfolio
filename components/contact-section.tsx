@@ -64,7 +64,7 @@ export function ContactSection() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ContactForm />
+                <ContactForm  />
               </CardContent>
             </Card>
           </motion.div>

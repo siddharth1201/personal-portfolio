@@ -20,6 +20,7 @@ const EMAILJS_SERVICE_ID = "default_service";
 const EMAILJS_TEMPLATE_ID = "template_5vcx7u5";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
+
 // --- Zod schema for form validation ---
 // The field names ('name', 'email', 'message') are used by react-hook-form.
 const formSchema = z.object({
