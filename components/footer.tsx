@@ -27,12 +27,12 @@ export function Footer() {
               </p>
               <div className="flex space-x-3">
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a href="https://github.com/siddharth1201" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a href="https://linkedin.com/in/siddharthverma7952a31a9" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
@@ -42,7 +42,7 @@ export function Footer() {
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild>
-                  <a href="mailto:hello@johndoe.com" aria-label="Email">
+                  <a href="mailto:siddharthverma1201@gmail.com" aria-label="Email">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
